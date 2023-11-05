@@ -37,7 +37,7 @@
         <section class="pay_dues">
             <h1>Pay your dues</h1>
             <p>Pls ensure you input your correct name as should appear on your receipt</p>
-            <form id="paystackForm">
+            <form id="paystackForm" name="submit-to-google-db">
                 <div class="input_fields">
                     <label for="firstName">First Name:</label>
                     <input type="text" name="firstname" id="firstName" required>
@@ -52,11 +52,11 @@
                 </div>
                 <div class="input_fields">
                     <label for="amount">Amount</label>
-                    <input type="text" id="amount" readonly value="5000.00">
+                    <input type="text" name="amount" id="amount" readonly value="5000.00">
                 </div>
                 <div class="input_fields">
-                    <label for="refno">refNo:</label>
-                    <input type="text" id="refno" readonly value="<?php echo $arr[0].$uniquenum?>">
+                    <label for="refNo">refNo:</label>
+                    <input type="text" name="refNo" id="refno" readonly value="<?php echo $arr[0].$uniquenum?>">
                 </div>
                 
                 <div class="input_submit">
@@ -89,8 +89,10 @@
     <script src="https://js.paystack.co/v1/inline.js"></script>
 
     <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzh7wIFqFMruP2LnoJeE9t99TwpPpsJ5ha-Q8sjKG1vhVKt0XzbiU4dbawLXKmnMJEjag/exec'
+        const form = document.forms['submit-to-google-db']
         const paystackForm = document.getElementById("paystackForm");
-        paystackForm.addEventListener("submit", payWithPaystack, false);
+        form.addEventListener("submit", payWithPaystack, false);
         function payWithPaystack(e){
             e.preventDefault();
             let handler = PaystackPop.setup(
@@ -101,24 +103,17 @@
                     onclose: function (params) {
                         alert("window closed.");
                     },
-                    callback: function (response) {
-                        let message = "payment complete! Reference:" + response.reference;
+                    callback: function (response, e) {
+                        let message = "payment complete! Reference:" + response.reference + "check your mail for your receipt";
                         // let emailAddress = document.getElementById("emailAddress").value;
                         // let firstName = document.getElementById("firstName").value;
                         // let lastName = document.getElementById("lastName").value;
                         // let RefNo;
                         alert(message);
-                        paystackForm.addEventListener("submit",(e)=>{
-                            e.preventDefault();
-                            let data = new FormData(paystackForm);
-                            fetch("https://script.google.com/macros/s/AKfycbzh7wIFqFMruP2LnoJeE9t99TwpPpsJ5ha-Q8sjKG1vhVKt0XzbiU4dbawLXKmnMJEjag/exec", {
-                                method:"POST",
-                                body: data
-                            })
-                            .then(res => res.text())
-                            .then(data => console.log(data));
-                            // paystackForm.reset();
-                        })
+                        e.preventDefault()
+                        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                        .then(response => console.log('Success!', response))
+                        .catch(error => console.error('Error!', error.message))
                     }
                 }
             );
