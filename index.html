@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <?php
+<!--     <?php
     $num = '0123467899876543210';
     $uniquenum = substr(str_shuffle($num),0,7);
     $arr = array("A", "B", "C", "D", "E", "F");
      shuffle($arr);
 
     echo $uniquenum;
-    ?>
+    ?> -->
     <header>
         <nav>
             <div class="logo_div">
@@ -40,15 +40,15 @@
             <form id="paystackForm" name="submit-to-google-db">
                 <div class="input_fields">
                     <label for="firstName">First Name:</label>
-                    <input type="text" name="firstname" id="firstName" required>
+                    <input type="text" name="firstName" id="firstName" required>
                 </div>
                 <div class="input_fields">
                     <label for="lastName">Last Name:</label>
-                    <input type="text" name="lastname" id="lastName" required>
+                    <input type="text" name="lastName" id="lastName" required>
                 </div>
                 <div class="input_fields">
                     <label for="emailAddress">Email Address</label>
-                    <input type="email" name="emailaddress" id="emailAddress" required>
+                    <input type="email" name="emailAddress" id="emailAddress" required>
                 </div>
                 <div class="input_fields">
                     <label for="amount">Amount</label>
@@ -56,7 +56,8 @@
                 </div>
                 <div class="input_fields">
                     <label for="refNo">refNo:</label>
-                    <input type="text" name="refNo" id="refno" readonly value="<?php echo $arr[0].$uniquenum?>">
+                    <input type="text" name="refNo" id="refno" readonly value="xxxx">
+<!--                     <?php echo $arr[0].$uniquenum?> -->
                 </div>
                 
                 <div class="input_submit">
@@ -92,7 +93,7 @@
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyyGcSVzm9V3ihWRpwKN7_ujTIM29PmAXHbG2HAeCXI4eCpsmjTjg4keWdavEEA3Qkd/exec'
         const form = document.forms['submit-to-google-db']
         const paystackForm = document.getElementById("paystackForm");
-        form.addEventListener("submit", payWithPaystack, false);
+        paystackForm.addEventListener("submit", payWithPaystack, false);
         function payWithPaystack(e){
             e.preventDefault();
             let handler = PaystackPop.setup(
