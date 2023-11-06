@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
+<!--     <header>
         <nav>
             <div class="logo_div">
     
@@ -20,7 +20,7 @@
         <section class="banner_img">
     
         </section>
-    </header>
+    </header> -->
     <main>
         <section class="meet_executives">
             <h1>Meet Our Executives</h1>
@@ -29,7 +29,7 @@
         <section class="pay_dues">
             <h1>Pay your dues</h1>
             <p>Pls ensure you input your correct name as should appear on your receipt</p>
-            <form name="submit-to-google-sheet" id="paystackForm">
+            <form name="myform" id="paystackForm">
             <input name="email" type="email" id="emailAddress" placeholder="Email" required><br>
             <input name="firstName" type="text" placeholder="First Name" required><br>
             <input name="lastName" type="text" placeholder="Last Name" required><br>
@@ -46,10 +46,10 @@
     <footer>
         <section>
             <div class="subscription_box">
-                <label for=""></label>
-                <input type="email" name="" id="">
+                <label for="email"></label>
+                <input type="email" name="" id="email">
                 <!-- <button type="submit"> <img src="" alt=""></button> -->
-                <input type="submit" value="">
+                <input type="submit" value="x">
                 <!--Use Background css image for the btn-->
             </div>
             <span>Thank you for subscribing</span>
@@ -62,7 +62,7 @@
 
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyTwtLDJRgq_p3valjDua7oUDY3BmCP2-JZW-uNnGPEaLn0AEmeL4nrsbBtG_N_pfoV/exec';
-        const form = document.forms['submit-to-google-sheet'];
+        const form = document.forms['myform'];
         const paystackForm = document.getElementById("paystackForm");
         paystackForm.addEventListener("submit", payWithPaystack, false);
         function payWithPaystack(e){
@@ -72,6 +72,7 @@
                     key:"pk_test_09fc76f50acf2edb6dcc24febd8e33364d46e0ce",
                     email:document.getElementById("emailAddress").value,
                     amount:5000*100,
+                    ref: ''+Math.floor((Math.random() * 1000000000) + 1),
                     onclose: function (params) {
                         alert("window closed.");
                     },
@@ -92,7 +93,7 @@
                         //     .then(response => console.log('Success!', response))
                         //     .catch(error => console.error('Error!', error.message))
                         // })
-                        document.form.submit();
+                        document.myform.submit();
                     }
                 }
             );
