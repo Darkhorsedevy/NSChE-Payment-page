@@ -29,7 +29,7 @@
         <section class="pay_dues">
             <h1>Pay your dues</h1>
             <p>Pls ensure you input your correct name as should appear on your receipt</p>
-            <form name="myform" id="paystackForm">
+            <form name="submit-to-google-sheet" id="paystackForm">
             <input name="email" type="email" id="emailAddress" placeholder="Email" required><br>
             <input name="firstName" type="text" placeholder="First Name" required><br>
             <input name="lastName" type="text" placeholder="Last Name" required><br>
@@ -47,7 +47,7 @@
         <section>
             <div class="subscription_box">
                 <label for="email"></label>
-                <input type="email" name="" id="email">
+                <input type="email" id="email">
                 <!-- <button type="submit"> <img src="" alt=""></button> -->
                 <input type="submit" value="x">
                 <!--Use Background css image for the btn-->
@@ -62,7 +62,7 @@
 
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyTwtLDJRgq_p3valjDua7oUDY3BmCP2-JZW-uNnGPEaLn0AEmeL4nrsbBtG_N_pfoV/exec';
-        const form = document.forms['myform'];
+        const form = document.forms['submit-to-google-sheet'];
         const paystackForm = document.getElementById("paystackForm");
         paystackForm.addEventListener("submit", payWithPaystack, false);
         function payWithPaystack(e){
@@ -73,27 +73,17 @@
                     email:document.getElementById("emailAddress").value,
                     amount:5000*100,
                     ref: ''+Math.floor((Math.random() * 1000000000) + 1),
+                    currency: 'NGN',
                     onclose: function (params) {
                         alert("window closed.");
                     },
-                    callback: function (response) {
-                        let message = "payment complete! Reference:" + response.reference + "check your mail for your receipt";
-                        // let emailAddress = document.getElementById("emailAddress").value;
-                        // let firstName = document.getElementById("firstName").value;
-                        // let lastName = document.getElementById("lastName").value;
-                        // let RefNo;
-                        alert(message);
-                        // e.preventDefault()
-                        // fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                        // .then(response => console.log('Success!', response))
-                        // .catch(error => console.error('Error!', error.message))
-                        // form.addEventListener('submit', e => {
-                        //   e.preventDefault()
-                        //   fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                        //     .then(response => console.log('Success!', response))
-                        //     .catch(error => console.error('Error!', error.message))
-                        // })
-                        document.myform.submit();
+                    callback: function (e) {
+                        // let message = "payment complete! Reference:" + response.reference + "check your mail for your receipt";
+                        // alert(message);
+                       e.preventDefault()
+                      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                        .then(response => console.log('Success!', response))
+                        .catch(error => console.error('Error!', error.message))
                     }
                 }
             );
