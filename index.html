@@ -61,7 +61,7 @@
                 </div>
                 
                 <div class="input_submit">
-                    <button type="submit" onclick="payWithPaystack()">Make Payment</button>
+                    <button type="submit">Make Payment</button>
                 </div>
             </form>
         </section>
@@ -95,7 +95,7 @@
         const paystackForm = document.getElementById("paystackForm");
         paystackForm.addEventListener("submit", payWithPaystack, false);
         function payWithPaystack(e){
-            e.preventDefault();
+            // e.preventDefault();
             let handler = PaystackPop.setup(
                 {
                     key:"pk_test_09fc76f50acf2edb6dcc24febd8e33364d46e0ce",
@@ -104,14 +104,14 @@
                     onclose: function (params) {
                         alert("window closed.");
                     },
-                    callback: function (response, e) {
+                    callback: function (response) {
                         let message = "payment complete! Reference:" + response.reference + "check your mail for your receipt";
                         // let emailAddress = document.getElementById("emailAddress").value;
                         // let firstName = document.getElementById("firstName").value;
                         // let lastName = document.getElementById("lastName").value;
                         // let RefNo;
                         alert(message);
-                        e.preventDefault()
+                        // e.preventDefault()
                         fetch(scriptURL, { method: 'POST', body: new FormData(form)})
                         .then(response => console.log('Success!', response))
                         .catch(error => console.error('Error!', error.message))
