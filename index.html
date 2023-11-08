@@ -77,13 +77,9 @@
                     onclose: function (params) {
                         alert("window closed.");
                     },
-                    callback: function (e) {
-                        // let message = "payment complete! Reference:" + response.reference + "check your mail for your receipt";
-                        // alert(message);
-                       e.preventDefault()
-                      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                        .then(response => console.log('Success!', response))
-                        .catch(error => console.error('Error!', error.message))
+                    callback: function (response) {
+                        let message = "payment complete! Reference:" + response.reference + "check your mail for your receipt";
+                        alert(message);
                     }
                 }
             );
