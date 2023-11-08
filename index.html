@@ -73,8 +73,16 @@
                     email:document.getElementById("emailAddress").value,
                     amount:5000*100,
                     ref: ''+Math.floor((Math.random() * 1000000000) + 1),
-                    first_name: document.getElementById("firstName"),
-                    last_name: document.getElementById("lastName"),
+                    // first_name: document.getElementById("firstName"),
+                    // last_name: document.getElementById("lastName"),
+                    metadata:{
+                      custom_field:[
+                            {
+                                first_name: document.getElementById("firsName").value,
+                                last_name: document.getElementById("lastName").value,
+                            }
+                        ]
+                    },
                     currency: 'NGN',
                     onclose: function (params) {
                         alert("window closed.");
