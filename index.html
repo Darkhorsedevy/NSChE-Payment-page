@@ -36,12 +36,6 @@
             <button type="submit" onclick="payWithPaystack">PAY NOW</button>
           </form>
         </section>
-        <section class="online_videos">
-            <h1>Tutorial Videos</h1>
-        </section>
-        <section class="articles">
-            <h1>Read Our Articles</h1>
-        </section>
     </main>
     <footer>
         <section>
@@ -81,14 +75,14 @@
                     //         }
                     //     ]
                     // },
-                    metadata: JSON.stringify({
-                      custom_fields: [
-                         { 
-                              first_name: document.getElementById("firstName").value,
-                              last_name: document.getElementById("lastName").value,
-                         },
-                      ]
-                   }),
+                    metadata:{
+                      custom_field:[
+                            {
+                                first_name: document.getElementById("firstName").value,
+                                last_name: document.getElementById("lastName").value,
+                            }
+                        ]
+                    },
                     currency: 'NGN',
                     onclose: function (params) {
                         alert("window closed.");
