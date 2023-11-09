@@ -59,34 +59,44 @@
                     ref: 'CHG'+Math.floor((Math.random() * 1000000000) + 1),
                     // first_name: document.getElementById("firstName"),
                     // last_name: document.getElementById("lastName"),
-                    metadata:{
-                      custom_field:[
-                            {
-                                first_name: firstName,
-                                last_name: lastName,
-                            }
-                        ]
-                    },
-                    // "metadata": {
-                    //     "cart_id": 398,
-                    //     "custom_fields": [
-                    //       {
-                    //         "display_name": "first name",
-                    //         "variable_name": "first_name",
-                    //         "value": document.getElementById("firsName").value
-                    //       },
-                    //       {
-                    //         "display_name": "last name",
-                    //         "variable_name": "last_name",
-                    //         "value": document.getElementById("lastName").value
-                    //       },
-                    //       {
-                    //         "display_name": "email Address",
-                    //         "variable_name": "email",
-                    //         "value": document.getElementById("emailAddress").value
-                    //       }  
+                    // metadata:{
+                    //   custom_field:[
+                    //         {
+                    //             first_name: firstName,
+                    //             last_name: lastName,
+                    //         }
                     //     ]
                     // },
+                   //  metadata: JSON.stringify({
+                   //    cart_id: 398,
+                   //    custom_fields: [
+                   //       { 
+                   //            display_name: "Invoice ID", 
+                   //            variable_name: "Invoice ID", 
+                   //            value: 209
+                   //       },
+                   //       { 
+                   //            display_name: "Cart Items", 
+                   //            variable_name: "cart_items", 
+                   //            value: "3 bananas, 12 mangoes"
+                   //       }
+                   //    ]
+                   // }),
+                    "metadata": {
+                        "cart_id": 398,
+                        "custom_fields": [
+                          {
+                            "display_name": "first name",
+                            "variable_name": "first_name",
+                            "value": authStore.user.first_name
+                          },
+                          {
+                            "display_name": "last name",
+                            "variable_name": "last_name",
+                            "value": authStore.user.last_name
+                          }, 
+                        ]
+                    },
                     currency: 'NGN',
                     onclose: function (params) {
                         alert("window closed.");
