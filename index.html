@@ -46,6 +46,8 @@
 
     <script>
         const paystackForm = document.getElementById("paystackForm");
+        const firstName = document.getElementById("firstName").value;
+        const lastName = document.getElementById("lastName").value;
         paystackForm.addEventListener("submit", payWithPaystack, false);
         function payWithPaystack(e){
             e.preventDefault();
@@ -60,8 +62,8 @@
                     metadata:{
                       custom_field:[
                             {
-                                first_name: document.getElementById("firsName").value,
-                                last_name: document.getElementById("lastName").value,
+                                first_name: "Glenn",
+                                last_name: "Quagmire",
                             }
                         ]
                     },
