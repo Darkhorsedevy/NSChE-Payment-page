@@ -39,16 +39,6 @@
     </main>
     <footer>
         <section>
-            <div class="subscription_box">
-                <label for="email"></label>
-                <input type="email" id="email">
-                <!-- <button type="submit"> <img src="" alt=""></button> -->
-                <input type="submit" value="x">
-                <!--Use Background css image for the btn-->
-            </div>
-            <span>Thank you for subscribing</span>
-        </section>
-        <section>
             <small>copyright2023</small>
         </section>
     </footer>
@@ -64,37 +54,37 @@
                     key:"pk_test_09fc76f50acf2edb6dcc24febd8e33364d46e0ce",
                     email:document.getElementById("emailAddress").value,
                     amount:5000*100,
-                    ref: ''+Math.floor((Math.random() * 1000000000) + 1),
+                    ref: 'CHG'+Math.floor((Math.random() * 1000000000) + 1),
                     // first_name: document.getElementById("firstName"),
                     // last_name: document.getElementById("lastName"),
-                    // metadata:{
-                    //   custom_field:[
-                    //         {
-                    //             first_name: document.getElementById("firsName").value,
-                    //             last_name: document.getElementById("lastName").value,
-                    //         }
-                    //     ]
-                    // },
-                    "metadata": {
-                        "cart_id": 398,
-                        "custom_fields": [
-                          {
-                            "display_name": "first name",
-                            "variable_name": "first_name",
-                            "value": document.getElementById("firsName").value
-                          },
-                          {
-                            "display_name": "last name",
-                            "variable_name": "last_name",
-                            "value": document.getElementById("lastName").value
-                          }
-                          // {
-                          //   "display_name": "email Address",
-                          //   "variable_name": "email",
-                          //   "value": document.getElementById("emailAddress").value
-                          // }  
+                    metadata:{
+                      custom_field:[
+                            {
+                                first_name: document.getElementById("firsName").value,
+                                last_name: document.getElementById("lastName").value,
+                            }
                         ]
                     },
+                    // "metadata": {
+                    //     "cart_id": 398,
+                    //     "custom_fields": [
+                    //       {
+                    //         "display_name": "first name",
+                    //         "variable_name": "first_name",
+                    //         "value": document.getElementById("firsName").value
+                    //       },
+                    //       {
+                    //         "display_name": "last name",
+                    //         "variable_name": "last_name",
+                    //         "value": document.getElementById("lastName").value
+                    //       },
+                    //       {
+                    //         "display_name": "email Address",
+                    //         "variable_name": "email",
+                    //         "value": document.getElementById("emailAddress").value
+                    //       }  
+                    //     ]
+                    // },
                     currency: 'NGN',
                     onclose: function (params) {
                         alert("window closed.");
