@@ -46,8 +46,8 @@
 
     <script>
         const paystackForm = document.getElementById("paystackForm");
-        const firstName = document.getElementById("firstName").value;
-        const lastName = document.getElementById("lastName").value;
+        // const firstName = document.getElementById("firstName").value;
+        // const lastName = document.getElementById("lastName").value;
         paystackForm.addEventListener("submit", payWithPaystack, false);
         function payWithPaystack(e){
             e.preventDefault();
@@ -57,8 +57,6 @@
                     email:document.getElementById("emailAddress").value,
                     amount:5000*100,
                     ref: 'CHG'+Math.floor((Math.random() * 1000000000) + 1),
-                    // first_name: document.getElementById("firstName"),
-                    // last_name: document.getElementById("lastName"),
                     // metadata:{
                     //   custom_field:[
                     //         {
@@ -67,36 +65,36 @@
                     //         }
                     //     ]
                     // },
-                   //  metadata: JSON.stringify({
-                   //    cart_id: 398,
-                   //    custom_fields: [
-                   //       { 
-                   //            display_name: "Invoice ID", 
-                   //            variable_name: "Invoice ID", 
-                   //            value: 209
-                   //       },
-                   //       { 
-                   //            display_name: "Cart Items", 
-                   //            variable_name: "cart_items", 
-                   //            value: "3 bananas, 12 mangoes"
-                   //       }
-                   //    ]
-                   // }),
-                    "metadata": {
-                        "cart_id": 398,
-                        "custom_fields": [
-                          {
-                            "display_name": "first name",
-                            "variable_name": "first_name",
-                            "value": authStore.user.first_name
-                          },
-                          {
-                            "display_name": "last name",
-                            "variable_name": "last_name",
-                            "value": authStore.user.last_name
-                          }, 
-                        ]
-                    },
+                    metadata: JSON.stringify({
+                      cart_id: 398,
+                      custom_fields: [
+                         { 
+                              display_name: "first name", 
+                              variable_name: "first_name", 
+                              value: document.getElementById("firstName")
+                         },
+                         { 
+                              display_name: "last name", 
+                              variable_name: "last_name", 
+                              value: document.getElementById("lastName")
+                         }
+                       ]
+                    }),
+                    // "metadata": {
+                    //     "cart_id": 398,
+                    //     "custom_fields": [
+                    //       {
+                    //         "display_name": "first name",
+                    //         "variable_name": "first_name",
+                    //         "value": authStore.user.first_name
+                    //       },
+                    //       {
+                    //         "display_name": "last name",
+                    //         "variable_name": "last_name",
+                    //         "value": authStore.user.last_name
+                    //       }, 
+                    //     ]
+                    // },
                     currency: 'NGN',
                     onclose: function (params) {
                         alert("window closed.");
