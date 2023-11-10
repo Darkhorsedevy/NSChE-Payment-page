@@ -1,0 +1,119 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+}
+
+.navtext_div{
+    width: 100%;
+    height: 80px;
+    background-color: rgb(10, 77, 10);
+    color: white;
+    border-bottom: 2px solid white;
+}
+.navtext_div p{
+    width: 100%;
+    height: 100%;
+    line-height: 80px;
+    padding-left: 20px;
+    font-weight: bold;
+}
+
+.grid_container{
+    width: 100%;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid_items{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* text-align: center; */
+}
+.input_field{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 30px;
+}
+input{
+    display: inline-block;
+    padding: 5px;
+    height: 100%;
+    width: 100%;  /*change width to 100% for mobile view and set the input_field height to > 40px*/
+}
+.banner_section{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.banner_section div{
+    margin-top: 20px;
+    text-align: center;
+}
+
+form{
+    background-color: white;
+    width: 70%;
+    height: 360px;  /*60vh*/
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 20px 3px gray;
+}
+form p{
+    text-align: center;
+}
+#selectLevel{
+    width: 100%;
+    height: 30px;
+    padding: 5px;
+}
+
+.success-btn{
+    width: 100%;
+    height: 35px;
+    color: white;
+    background-color: lightgray;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.footer_section{
+    width: 100%;
+    height: calc(100vh - 80vh - 80px);
+    line-height: calc(100vh - 80vh - 80px);
+    color: white;
+    background-color: rgb(10, 77, 10);
+    text-align: center;
+}
+
+
+@media only screen and (max-width:600px){
+    .grid_container{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .form{
+        width: 90%;
+    }
+    .banner_section{
+        height: 60vh;
+        padding-top: 20px;
+    }
+}
+@media only screen and (max-width:400px){
+    .form{
+        width: 94%;
+    }
+}
