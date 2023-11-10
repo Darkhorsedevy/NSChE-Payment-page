@@ -11,6 +11,6 @@ selectLevel.onchange = function (params) {
     }
 }
 
-function changeColor (params) {
-    document.body.style.backgroundColor = "green";
-}
+// function changeColor (params) {
+//     document.body.style.backgroundColor = "green";
+// }
