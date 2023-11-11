@@ -25,7 +25,7 @@ body{
 }
 
 .grid_container{
-    width: 100%;
+/*     width: 100%; */
     height: fit-content;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
