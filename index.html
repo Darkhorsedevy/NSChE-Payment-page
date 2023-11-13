@@ -38,7 +38,9 @@
                 <div class="input_field">
                     <input type="text" id="amount" readonly value="NGN 5000.00">
                 </div>
-
+                <div class="input_field">
+                    <input type="number" name="matricNo" id="matricNo" placeholder="Matric Number" required>
+                </div>
                 <div class="input_field">
                     <select name="selectLevel" id="selectLevel">
                         <option value="null">SELECT LEVEL</option>
@@ -100,6 +102,11 @@
                               display_name: "level", 
                               variable_name: "level", 
                               value: document.getElementById("selectLevel").value
+                         },
+                         { 
+                              display_name: "matric number", 
+                              variable_name: "matric_number", 
+                              value: document.getElementById("matricNo").value
                          }
                        ]
                     },
