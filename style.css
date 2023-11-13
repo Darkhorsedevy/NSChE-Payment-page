@@ -67,7 +67,7 @@ input{
 form{
     background-color: white;
     width: 70%;
-    height: 360px;  /*60vh*/
+    height: 400px;  /*60vh*/
     padding: 20px;
     border-radius: 10px;
     box-shadow: 3px 3px 20px 3px gray;
